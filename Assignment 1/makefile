@@ -1,5 +1,5 @@
 all:
-	echo "To simulate add a file"
+	echo "Invalid command"
 
 seven_seg:
 	ghdl -a seven_seg.vhd
