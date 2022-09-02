@@ -7,6 +7,8 @@ entity counter7 is
 		count_width : integer := 5000000);
 	port(
 		CLK : in std_logic;
+		run : in std_logic;
+		rst : in std_logic;
         clk_OUT : out std_logic);
 end counter7;
 
@@ -15,9 +17,12 @@ architecture counterArc of counter7 is
     signal tclk : std_logic := '1';
 begin
 	clk_OUT <= tclk;
-	countProc : process(clk)
+	countProc : process(clk,run,rst)
     begin
-    	if rising_edge(clk) then
+		if rst = '1' then
+			count <= 0;
+			tclk <= '1';
+    	elsif rising_edge(clk) and run = '1' then
     	   if count+1=count_width then
     	       count <= 0;
     	       tclk <= not tclk;
