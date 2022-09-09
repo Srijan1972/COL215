@@ -20,11 +20,10 @@ begin
     begin
     	if(rising_edge(CLK)) then
             if(button = '1') then
-                if(count + 1 = count_width) then
+                count <= count + 1;
+                if(count = count_width -1) then
                     count <= 0;
                     temp <= '1';
-                else
-                    count <= count + 1;
                 end if;
            else 
                 count <= 0;

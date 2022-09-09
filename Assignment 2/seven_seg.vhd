@@ -3,13 +3,15 @@ use ieee.std_logic_1164.all;
 
 entity seven_seg is
     port(
-        inp  :in std_logic_vector(3 downto 0);
-        disp :out std_logic_vector(6 downto 0));
+        inp :in std_logic_vector(3 downto 0);
+        disp:out std_logic_vector(6 downto 0);
+        an  :out std_logic_vector(3 downto 0));
 end seven_seg;
 
 architecture beh of seven_seg is
     signal disp_temp:std_logic_vector(6 downto 0);
 begin
+    an <= "1110";
     disp <= disp_temp;
     -- -- 0 --
     -- |     |
