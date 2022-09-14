@@ -5,7 +5,7 @@ use ieee.numeric_std.all;
 entity mac is
     port (
         clk  :in std_logic;
-        cntrl:in std_logic;
+        ctrl:in std_logic;
         din1 :in std_logic_vector(7 downto 0);
         din2 :in std_logic_vector(7 downto 0);
         dout :out std_logic_vector(7 downto 0));
@@ -18,7 +18,7 @@ begin
     process(clk)
     begin
         if rising_edge(clk) then
-            if cntrl='1' then
+            if ctrl='1' then
                 temp_reg <= std_logic_vector(signed(din1) * signed(din2));
             else
                 temp_reg <= std_logic_vector(signed(temp_reg) + signed(din1) * signed(din2));

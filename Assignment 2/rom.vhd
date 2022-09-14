@@ -5,10 +5,10 @@ use std.textio.all;
 
 entity rom is
     generic(
-        img_file:string:="sample.mif");
+        img_file:string:="imgdata_digit7.mif";
+        params_file:string:="weights_bias.mif");
     port(
         clk :in std_logic;
-        re  :in std_logic;
         addr:in std_logic_vector(16 downto 0);
         dout:out std_logic_vector(7 downto 0));
 end entity;
@@ -16,8 +16,8 @@ end entity;
 architecture beh of rom is
     type mem_array is array (0 to 131071) of std_logic_vector(7 downto 0);
 
-    impure function init_mem(mif_file_name:in string) return mem_array is
-        file mif_file : text open read_mode is mif_file_name;
+    impure function load_img(img_file:in string) return mem_array is
+        file mif_file : text open read_mode is img_file;
         variable mif_line : line;
         variable temp_bv : bit_vector(7 downto 0);
         variable temp_mem : mem_array;
@@ -29,11 +29,25 @@ architecture beh of rom is
         end loop;
         return temp_mem;
     end function;
-    signal ro_mem:mem_array:=init_mem(img_file);
-begin
-    process(clk,re)
+
+    impure function load_params (params_file:in string;mem:in mem_array) return mem_array is
+        file mif_file : text open read_mode is params_file;
+        variable mif_line : line;
+        variable temp_bv : bit_vector(7 downto 0);
+        variable temp_mem : mem_array:=mem;
     begin
-        if rising_edge(clk) and re='1' then
+        for i in 0 to 50889 loop
+            readline(mif_file, mif_line);
+            read(mif_line, temp_bv);
+            temp_mem(784+i) := to_stdlogicvector(temp_bv);
+        end loop;
+        return temp_mem;
+    end function;
+    signal ro_mem:mem_array:=load_params(params_file,load_img(img_file));
+begin
+    process(clk)
+    begin
+        if rising_edge(clk) then
             dout <= ro_mem(to_integer(unsigned(addr)));
         end if;
     end process;
