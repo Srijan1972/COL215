@@ -9,15 +9,15 @@ entity rom is
         params_file:string:="weights_bias.mif");
     port(
         clk :in std_logic;
-        addr:in std_logic_vector(16 downto 0);
+        addr:in std_logic_vector(15 downto 0);
         dout:out std_logic_vector(7 downto 0));
 end entity;
 
 architecture beh of rom is
-    type mem_array is array (0 to 131071) of std_logic_vector(7 downto 0);
+    type mem_array is array (0 to 65535) of std_logic_vector(7 downto 0);
 
-    impure function load_img(img_file:in string) return mem_array is
-        file mif_file : text open read_mode is img_file;
+    impure function load_img(img:in string) return mem_array is
+        file mif_file : text open read_mode is img;
         variable mif_line : line;
         variable temp_bv : bit_vector(7 downto 0);
         variable temp_mem : mem_array;
@@ -30,8 +30,8 @@ architecture beh of rom is
         return temp_mem;
     end function;
 
-    impure function load_params (params_file:in string;mem:in mem_array) return mem_array is
-        file mif_file : text open read_mode is params_file;
+    impure function load_params (params:in string;mem:in mem_array) return mem_array is
+        file mif_file : text open read_mode is params;
         variable mif_line : line;
         variable temp_bv : bit_vector(7 downto 0);
         variable temp_mem : mem_array:=mem;
