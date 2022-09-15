@@ -12,7 +12,7 @@ architecture beh of comparator is
 begin
     process(cin)
     begin
-        if cin(15) = '1' then
+        if cin(15) = '0' then
             cout <= cin;
         else
             cout <= X"0000";
