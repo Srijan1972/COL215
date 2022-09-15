@@ -20,7 +20,7 @@ architecture tb of tb_mac is
     signal din2 : std_logic_vector (15 downto 0);
     signal dout : std_logic_vector (15 downto 0);
 
-    constant TbPeriod : time := 1000 ns; -- EDIT Put right period here
+    constant TbPeriod : time := 100 ns; -- EDIT Put right period here
     signal TbClock : std_logic := '0';
     signal TbSimEnded : std_logic := '0';
 
@@ -45,9 +45,30 @@ begin
         ctrl <= '0';
         din1 <= (others => '0');
         din2 <= (others => '0');
+        wait for 100 ns;
+        din1 <= x"05";
+        din2 <= x"0005";
+        wait for 100 ns;
+        din1 <= x"15";
+        din2 <= x"0105";
+        wait for 100 ns;
+        ctrl <= '1';
+        din1 <= x"05";
+        din2 <= x"0005";
+        wait for 100 ns;
+        din1 <= x"15";
+        din2 <= x"0105";
+        wait for 100 ns;
+        din1 <= x"f5";
+        din2 <= x"f0f5";
+        wait for 100 ns;
+        ctrl <= '0';
+        din1 <= x"05";
+        din2 <= x"0005";
+        wait for 100 ns;
 
         -- EDIT Add stimuli here
-        wait for 100 * TbPeriod;
+        wait for 5 * TbPeriod;
 
         -- Stop the clock and hence terminate the simulation
         TbSimEnded <= '1';

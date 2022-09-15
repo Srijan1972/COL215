@@ -24,6 +24,15 @@ begin
     begin
         -- EDIT Adapt initialization as needed
         cin <= (others => '0');
+        wait for 100 ns;
+        cin <= x"f111";
+        wait for 100 ns;
+        cin <= x"7fff";
+        wait for 100 ns;
+        cin <= x"5f00";
+        wait for 100 ns;
+        cin <= x"8000";
+        wait for 100 ns;
 
         -- EDIT Add stimuli here
 

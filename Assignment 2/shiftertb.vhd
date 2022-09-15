@@ -18,7 +18,7 @@ architecture tb of tb_shifter is
     signal sin  : std_logic_vector (15 downto 0);
     signal sout : std_logic_vector (15 downto 0);
 
-    constant TbPeriod : time := 1000 ns; -- EDIT Put right period here
+    constant TbPeriod : time := 100 ns; -- EDIT Put right period here
     signal TbClock : std_logic := '0';
     signal TbSimEnded : std_logic := '0';
 
@@ -41,9 +41,17 @@ begin
         -- EDIT Adapt initialization as needed
         sen <= '0';
         sin <= (others => '0');
-
+        wait for 100 ns;
+        sen <= '1';
+        sin <= x"001f";
+        wait for 100 ns;
+        sin <= x"0ff0";
+        wait for 100 ns;
+        sen <= '0';
+        wait for 10 ns;
+        sin <= x"0110";
         -- EDIT Add stimuli here
-        wait for 100 * TbPeriod;
+        wait for 5 * TbPeriod;
 
         -- Stop the clock and hence terminate the simulation
         TbSimEnded <= '1';
