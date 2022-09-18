@@ -8,7 +8,7 @@ entity rom is
         img_file:string:="imgdata_digit7.mif";
         params_file:string:="weights_bias.mif");
     port(
-        clk :in std_logic;
+--        clk :in std_logic;
         addr:in std_logic_vector(15 downto 0);
         dout:out std_logic_vector(7 downto 0));
 end entity;
@@ -39,16 +39,11 @@ architecture beh of rom is
         for i in 0 to 50889 loop
             readline(mif_file, mif_line);
             read(mif_line, temp_bv);
-            temp_mem(784+i) := to_stdlogicvector(temp_bv);
+            temp_mem(1024+i) := to_stdlogicvector(temp_bv);
         end loop;
         return temp_mem;
     end function;
     signal ro_mem:mem_array:=load_params(params_file,load_img(img_file));
 begin
-    process(clk)
-    begin
-        if rising_edge(clk) then
-            dout <= ro_mem(to_integer(unsigned(addr)));
-        end if;
-    end process;
+    dout <= ro_mem(to_integer(unsigned(addr)));
 end beh;

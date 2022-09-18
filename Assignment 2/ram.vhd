@@ -15,10 +15,10 @@ architecture beh of ram is
     type mem_array is array (0 to 1023) of std_logic_vector(15 downto 0);
     signal ra_mem:mem_array:=(others => X"0000");
 begin
+    dout <= ra_mem(to_integer(unsigned(addr)));
     process(clk)
     begin
         if rising_edge(clk) then
-            dout <= ra_mem(to_integer(unsigned(addr)));
             if w='1' then
                 ra_mem(to_integer(unsigned(addr))) <= din;
             end if;

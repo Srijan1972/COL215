@@ -5,16 +5,13 @@ entity tb_mac is
 end tb_mac;
 
 architecture tb of tb_mac is
-
     component mac
-        port (clk  : in std_logic;
-              ctrl : in std_logic;
+        port (ctrl : in std_logic;
               din1 : in std_logic_vector (7 downto 0);
               din2 : in std_logic_vector (15 downto 0);
               dout : out std_logic_vector (15 downto 0));
     end component;
 
-    signal clk  : std_logic;
     signal ctrl : std_logic;
     signal din1 : std_logic_vector (7 downto 0);
     signal din2 : std_logic_vector (15 downto 0);
@@ -27,8 +24,7 @@ architecture tb of tb_mac is
 begin
 
     dut : mac
-    port map (clk  => clk,
-              ctrl => ctrl,
+    port map (ctrl => ctrl,
               din1 => din1,
               din2 => din2,
               dout => dout);
@@ -37,7 +33,6 @@ begin
     TbClock <= not TbClock after TbPeriod/2 when TbSimEnded /= '1' else '0';
 
     -- EDIT: Check that clk is really your main clock signal
-    clk <= TbClock;
 
     stimuli : process
     begin
