@@ -5,8 +5,8 @@ use std.textio.all;
 
 entity rom is
     generic(
-        img_file:string:="imgdata_digit7.mif";
-        params_file:string:="weights_bias.mif");
+        img_file:string;
+        params_file:string);
     port(
 --        clk :in std_logic;
         addr:in std_logic_vector(15 downto 0);
