@@ -15,13 +15,13 @@ architecture beh of mac is
     signal temp_reg:std_logic_vector(23 downto 0):=(others => '0');
 begin
     dout <= temp_reg(15 downto 0);
-    process(ctrl,din1,din2)
+    process(ctrl,en,din1,din2)
     begin
         if en='1' or en='0' then
             if ctrl='1' then
                 temp_reg <= std_logic_vector(signed(din1) * signed(din2));
             else
-                temp_reg <= std_logic_vector(signed(temp_reg) + signed(din1) * signed(din2));
+                temp_reg <= std_logic_vector(signed(temp_reg) + (signed(din1) * signed(din2)));
             end if;
         end if;
     end process;

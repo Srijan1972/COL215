@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2016.4 (64-bit)
+# SW Build 1756540 on Mon Jan 23 19:11:19 MST 2017
+# IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
+# Start of session at: Wed Oct  5 13:06:35 2022
+# Process ID: 21752
+# Current directory: /home/dual/cs5200444/Desktop/assignment 2/mlp/mlp.runs/synth_1
+# Command line: vivado -log mlp.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source mlp.tcl
+# Log file: /home/dual/cs5200444/Desktop/assignment 2/mlp/mlp.runs/synth_1/mlp.vds
+# Journal file: /home/dual/cs5200444/Desktop/assignment 2/mlp/mlp.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source mlp.tcl -notrace

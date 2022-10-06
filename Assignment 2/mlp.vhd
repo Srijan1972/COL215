@@ -72,24 +72,24 @@ end component;
     signal inp:std_logic_vector(3 downto 0):=X"F";
     signal sin:std_logic_vector(15 downto 0):=(others => '0');
     signal sout:std_logic_vector(15 downto 0):=(others => '0');
-    signal ready:std_logic:='0';
     signal ram_int:integer range 0 to 1023:=0;
     signal rom_int:integer range 0 to 65535:=0;
     signal iter_layer1:integer range 0 to 63:=0;
     signal iter_layer2:integer range 0 to 9:=0;
     signal bias1:integer range 0 to 65535:=51200;
     signal bias2:integer range 0 to 65535:=51904;
-    type state_type is (beg,romtoram0,romtoram1,start_layer1,mult_layer1,mult_inc1,add_layer1,relu_layer1,write_layer1,back_layer1,start_layer2,mult_layer2,mult_inc2,add_layer2,write_layer2,back_layer2,ready_for_max,iter_max,inc_max,done);
+    type state_type is (beg,romtoram0,romtoram1,start_layer1,mult_layer1,mult_inc1,add_layer1,relu_layer1,write_layer1,back_layer1,start_layer2,mult_layer2,mult_inc2,add_layer2,write_layer2,back_layer2,ready_for_max,iter_max,set_max,inc_max,done);
     signal state:state_type:=beg;
     signal next_state:state_type:=beg;
-    signal max_idx:integer:=-1;
+    signal max_idx:integer range 0 to 15:=15;
     signal max_weight:std_logic_vector(15 downto 0):=X"8000";
+    signal gt:std_logic:='0';
 begin
     state <= next_state;
     ram_addr <= std_logic_vector(to_unsigned(ram_int,10));
     rom_addr <= std_logic_vector(to_unsigned(rom_int,16));
     relu:comparator port map(cin,cout);
-    apple:mac port map(ctrl,mac_din1,mac_din2,mac_dout);
+    apple:mac port map(ctrl,mac_en,mac_din1,mac_din2,mac_dout);
     local:ram port map(clk,ram_w,ram_din,ram_addr,ram_dout);
     global:rom generic map("imgdata_digit7.mif","weights_bias.mif") port map(rom_addr,rom_dout);
     div:shifter port map(sin,sout);
@@ -103,7 +103,7 @@ begin
                     ram_int <= 0;
                     iter_layer1 <= 0;
                     iter_layer2 <= 0;
-                    max_idx <= -1;
+                    max_idx <= 15;
                     max_weight <= X"8000";
                     mac_en <= '0';
                     ram_w <= '0';
@@ -121,6 +121,7 @@ begin
                         next_state <= romtoram1;
                     end if;
                 when romtoram1 =>
+                    ram_w <= '0';
                     rom_int <= rom_int + 1;
                     ram_int <= ram_int + 1;
                     next_state <= romtoram0;
@@ -219,7 +220,14 @@ begin
                     ram_int <= 848;
                     next_state <= iter_max;
                 when iter_max =>
-                    if to_integer(signed(ram_dout))>to_integer(signed(max_weight)) then
+                    if signed(ram_dout) > signed(max_weight) then
+                        gt <= '1';
+                    else
+                        gt <= '0';
+                    end if;
+                    next_state <= set_max;
+                when set_max =>
+                    if gt = '1' then
                         max_idx <= ram_int - 848;
                         max_weight <= ram_dout;
                     end if;
@@ -232,7 +240,7 @@ begin
                         next_state <= iter_max;
                     end if;
                 when done =>
-                    inp <= std_logic_vector(to_signed(max_idx,4));
+                    inp <= std_logic_vector(to_unsigned(max_idx,4));
                     next_state <= done;
                 when others => null; 
             end case;

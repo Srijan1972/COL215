@@ -7,6 +7,6 @@ all:
 	ghdl -a shifter.vhd
 	ghdl -a mlp.vhd
 	ghdl -a mlp_tb.vhd
-	ghdl -e mlp_tb
-	ghdl -r mlp_tb --stop-time=1ms --wave=mlp.ghw
+	ghdl -e tb_mlp
+	ghdl -r tb_mlp --wave=mlp.ghw
 	gtkwave mlp.ghw

@@ -1,0 +1,84 @@
+Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
+| Date         : Wed Oct  5 13:17:28 2022
+| Host         : narmada running 64-bit Ubuntu 16.04.7 LTS
+| Command      : report_control_sets -verbose -file mlp_control_sets_placed.rpt
+| Design       : mlp
+| Device       : xc7a35t
+------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Flip-Flop Distribution
+3. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |    17 |
+| Unused register locations in slices containing registers |    38 |
++----------------------------------------------------------+-------+
+
+
+2. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |               4 |            4 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |               0 |            0 |
+| Yes          | No                    | No                     |             153 |           86 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |              29 |            7 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+3. Detailed Control Set Information
+-----------------------------------
+
++----------------+---------------------------------------+------------------------+------------------+----------------+
+|  Clock Signal  |             Enable Signal             |    Set/Reset Signal    | Slice Load Count | Bel Load Count |
++----------------+---------------------------------------+------------------------+------------------+----------------+
+|  clk_IBUF_BUFG | inp[3]_i_1_n_0                        |                        |                1 |              4 |
+|  clk_IBUF_BUFG |                                       |                        |                4 |              4 |
+|  clk_IBUF_BUFG | iter_layer2[3]_i_2_n_0                | iter_layer2[3]_i_1_n_0 |                1 |              4 |
+|  clk_IBUF_BUFG | max_weight                            | max_idx[3]_i_1_n_0     |                1 |              4 |
+|  clk_IBUF_BUFG | next_state[4]_i_1_n_0                 |                        |                4 |              5 |
+|  clk_IBUF_BUFG | iter_layer1[5]_i_1_n_0                |                        |                2 |              6 |
+|  clk_IBUF_BUFG | ram_din[9]_i_1_n_0                    | ram_din[15]_i_1_n_0    |                1 |              6 |
+|  clk_IBUF_BUFG | ram_din[9]_i_1_n_0                    |                        |                6 |             10 |
+|  clk_IBUF_BUFG | cin[15]_i_1_n_0                       |                        |                4 |             11 |
+|  clk_IBUF_BUFG | ram_int0                              |                        |                8 |             13 |
+|  clk_IBUF_BUFG | max_weight                            | max_weight[14]_i_1_n_0 |                4 |             15 |
+|  clk_IBUF_BUFG | sin[15]_i_1_n_0                       |                        |                4 |             16 |
+|  clk_IBUF_BUFG | local/ra_mem_reg_768_1023_0_0_i_1_n_0 |                        |               16 |             64 |
+|  clk_IBUF_BUFG | local/ra_mem_reg_512_767_0_0_i_1_n_0  |                        |               16 |             64 |
+|  clk_IBUF_BUFG | local/ra_mem_reg_256_511_0_0_i_1_n_0  |                        |               16 |             64 |
+|  clk_IBUF_BUFG | local/ra_mem_reg_0_255_0_0_i_1_n_0    |                        |               16 |             64 |
+|  clk_IBUF_BUFG | rom_int[15]_i_1_n_0                   |                        |               57 |             88 |
++----------------+---------------------------------------+------------------------+------------------+----------------+
+
+
++--------+-----------------------+
+| Fanout | Number of ControlSets |
++--------+-----------------------+
+| 4      |                     4 |
+| 5      |                     1 |
+| 6      |                     2 |
+| 10     |                     1 |
+| 11     |                     1 |
+| 13     |                     1 |
+| 15     |                     1 |
+| 16+    |                     6 |
++--------+-----------------------+
+
+

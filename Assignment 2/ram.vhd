@@ -18,10 +18,8 @@ begin
     dout <= ra_mem(to_integer(unsigned(addr)));
     process(clk)
     begin
-        if rising_edge(clk) then
-            if w='1' then
-                ra_mem(to_integer(unsigned(addr))) <= din;
-            end if;
+        if rising_edge(clk) and w='1' then
+            ra_mem(to_integer(unsigned(addr))) <= din;
         end if;
     end process;
 end beh;
