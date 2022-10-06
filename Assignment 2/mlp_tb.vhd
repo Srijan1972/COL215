@@ -18,7 +18,7 @@ architecture tb of tb_mlp is
     signal disp  : std_logic_vector (6 downto 0);
     signal an    : std_logic_vector (3 downto 0);
 
-    constant TbPeriod : time := 10 ns; -- EDIT Put right period here
+    constant TbPeriod : time := 100 ns; -- EDIT Put right period here
     signal TbClock : std_logic := '0';
     signal TbSimEnded : std_logic := '0';
 
@@ -41,10 +41,10 @@ begin
         -- EDIT Adapt initialization as needed
         start <= '0';
 
-        wait for 1 ns;
+        wait for 100 ns;
         start <= '1';
 
-        wait for 100000 * TbPeriod;
+        wait for 125000 * TbPeriod;
 
         -- Stop the clock and hence terminate the simulation
         TbSimEnded <= '1';

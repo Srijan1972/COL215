@@ -78,7 +78,7 @@ end component;
     signal iter_layer2:integer range 0 to 9:=0;
     signal bias1:integer range 0 to 65535:=51200;
     signal bias2:integer range 0 to 65535:=51904;
-    type state_type is (beg,romtoram0,romtoram1,start_layer1,mult_layer1,mult_inc1,add_layer1,relu_layer1,write_layer1,back_layer1,start_layer2,mult_layer2,mult_inc2,add_layer2,write_layer2,back_layer2,ready_for_max,iter_max,set_max,inc_max,done);
+    type state_type is (beg,romtoram0,romtoram1,start_layer1,mult_layer1,mult_inc1,load_bias1,add_layer1,relu_layer1,write_layer1,back_layer1,start_layer2,mult_layer2,mult_inc2,load_bias2,add_layer2,write_layer2,back_layer2,ready_for_max,iter_max,set_max,inc_max,done);
     signal state:state_type:=beg;
     signal next_state:state_type:=beg;
     signal max_idx:integer range 0 to 15:=15;
@@ -136,19 +136,23 @@ begin
                     else
                         ctrl <= '0';
                     end if;
-                    mac_en <= not mac_en;
+                    mac_en <= '1';
                     mac_din1 <= rom_dout;
                     mac_din2 <= ram_dout;
                     if ram_int = 783 then
-                        next_state <= add_layer1;
-                        rom_int <= bias1 + iter_layer1;
+                        next_state <= load_bias1;
                     else
                         next_state <= mult_inc1;
                     end if;
                 when mult_inc1 =>
+                    mac_en <= '0';
                     rom_int <= rom_int + 1;
                     ram_int <= ram_int + 1;
                     next_state <= mult_layer1;
+                when load_bias1 =>
+                    mac_en <= '0';
+                    rom_int <= bias1 + iter_layer1;
+                    next_state <= add_layer1;
                 when add_layer1 =>
                     if rom_dout(7)='1' then
                         sin <= std_logic_vector(signed(X"FF" & rom_dout) + signed(mac_dout));
@@ -183,19 +187,23 @@ begin
                     else
                         ctrl <= '0';
                     end if;
-                    mac_en <= not mac_en;
+                    mac_en <= '1';
                     mac_din1 <= rom_dout;
                     mac_din2 <= ram_dout;
                     if ram_int = 847 then
                         next_state <= add_layer2;
-                        rom_int <= bias2 + iter_layer2;
                     else
                         next_state <= mult_inc2;
                     end if;
                 when mult_inc2 =>
+                    mac_en <= '0';
                     rom_int <= rom_int + 1;
                     ram_int <= ram_int + 1;
                     next_state <= mult_layer2;
+                when load_bias2 =>
+                    mac_en <= '0';
+                    rom_int <= bias2 + iter_layer2;
+                    next_state <= add_layer2;
                 when add_layer2 =>
                     if rom_dout(7)='1' then
                         sin <= std_logic_vector(signed(X"FF" & rom_dout) + signed(mac_dout));
