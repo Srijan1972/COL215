@@ -15,7 +15,7 @@ architecture beh of mac is
     signal temp_reg:std_logic_vector(23 downto 0):=(others => '0');
 begin
     dout <= temp_reg(15 downto 0);
-    process(en)
+    process(ctrl,en,din1,din2)
     begin
         if en='1' then
             if ctrl='1' then

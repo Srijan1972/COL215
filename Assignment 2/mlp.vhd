@@ -91,7 +91,7 @@ begin
     relu:comparator port map(cin,cout);
     apple:mac port map(ctrl,mac_en,mac_din1,mac_din2,mac_dout);
     local:ram port map(clk,ram_w,ram_din,ram_addr,ram_dout);
-    global:rom generic map("imgdata_digit7.mif","weights_bias.mif") port map(rom_addr,rom_dout);
+    global:rom generic map("imgdata_digit0.mif","weights_bias.mif") port map(rom_addr,rom_dout);
     div:shifter port map(sin,sout);
     display:seven_seg port map(inp,disp,an);
     process(clk)
@@ -136,7 +136,7 @@ begin
                     else
                         ctrl <= '0';
                     end if;
-                    mac_en <= '1';
+                    mac_en <= '0';
                     mac_din1 <= rom_dout;
                     mac_din2 <= ram_dout;
                     if ram_int = 783 then
@@ -145,15 +145,16 @@ begin
                         next_state <= mult_inc1;
                     end if;
                 when mult_inc1 =>
-                    mac_en <= '0';
+                    mac_en <= '1';
                     rom_int <= rom_int + 1;
                     ram_int <= ram_int + 1;
                     next_state <= mult_layer1;
                 when load_bias1 =>
-                    mac_en <= '0';
+                    mac_en <= '1';
                     rom_int <= bias1 + iter_layer1;
                     next_state <= add_layer1;
                 when add_layer1 =>
+                    mac_en <= '0';
                     if rom_dout(7)='1' then
                         sin <= std_logic_vector(signed(X"FF" & rom_dout) + signed(mac_dout));
                     else
@@ -171,6 +172,7 @@ begin
                 when back_layer1 =>
                     ram_w <= '0';
                     if iter_layer1 = 63 then
+                        iter_layer1 <= iter_layer1;
                         next_state <= start_layer2;
                     else
                         iter_layer1 <= iter_layer1 + 1;
@@ -187,7 +189,7 @@ begin
                     else
                         ctrl <= '0';
                     end if;
-                    mac_en <= '1';
+                    mac_en <= '0';
                     mac_din1 <= rom_dout;
                     mac_din2 <= ram_dout;
                     if ram_int = 847 then
@@ -196,15 +198,16 @@ begin
                         next_state <= mult_inc2;
                     end if;
                 when mult_inc2 =>
-                    mac_en <= '0';
+                    mac_en <= '1';
                     rom_int <= rom_int + 1;
                     ram_int <= ram_int + 1;
                     next_state <= mult_layer2;
                 when load_bias2 =>
-                    mac_en <= '0';
+                    mac_en <= '1';
                     rom_int <= bias2 + iter_layer2;
                     next_state <= add_layer2;
                 when add_layer2 =>
+                    mac_en <= '0';
                     if rom_dout(7)='1' then
                         sin <= std_logic_vector(signed(X"FF" & rom_dout) + signed(mac_dout));
                     else
@@ -219,6 +222,7 @@ begin
                 when back_layer2 =>
                     ram_w <= '0';
                     if iter_layer2 = 9 then
+                        iter_layer2 <= iter_layer2;
                         next_state <= ready_for_max;
                     else
                         iter_layer2 <= iter_layer2 + 1;
@@ -238,11 +242,15 @@ begin
                     if gt = '1' then
                         max_idx <= ram_int - 848;
                         max_weight <= ram_dout;
+                    else
+                        max_idx <= max_idx;
+                        max_weight <= max_weight;
                     end if;
                     next_state <= inc_max;
                 when inc_max =>
                     if ram_int = 857 then
                         next_state <= done;
+                        ram_int <= ram_int;
                     else
                         ram_int <= ram_int + 1;
                         next_state <= iter_max;
