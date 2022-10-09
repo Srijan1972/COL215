@@ -5,7 +5,7 @@
   /Author   (cs5200444)
   /Producer (Concept Engineering GmbH)
   /Creator  (Nlview 6.6.5b  2016-09-06 bk=1.3687 VDI=39 GEI=35)
-  /CreationDate (D:20220916155452)
+  /CreationDate (D:20221009112517)
 >>
 endobj
 2 0 obj
@@ -37,7 +37,7 @@ endobj
 endobj
 %
 % Nlview page 1
-% (user space scaling 1.49032)
+% (user space scaling 1.08281)
 %
 10 0 obj
 <<
@@ -51,50 +51,187 @@ endobj
 endobj
 11 0 obj
 <<
-  /Length 1176
+  /Length 2353
 >>
 stream
-1 0 0 1 0 292.684 cm
+1 0 0 1 0 296.817 cm
 1 0 0 1 28.8 28.8 cm
-1.49032 0 0 -1.49032 0 0 cm
-1 0 0 1 0 -100 cm
-0 0 372 100 re
+1.08281 0 0 -1.08281 0 0 cm
+1 0 0 1 0 -130 cm
+0 0 512 130 re
 W n
 /GS gs
 1 0 0 1 111 10 cm
 q
 1.000 1.000 1.000 rg
 /GSa0 gs
--111 -10 372 101 re
-f
-Q
-q
-1.000 1.000 0.800 rg
-/GSa0 gs
-30 20 100 40 re
+-111 -10 512 131 re
 f
 Q
 [] 0 d
 1 w
 0.000 0.000 0.000 RG
 /GSA0 gs
-30 20 100 40 re
+0 20 m
+-7 27 l
+-21 27 l
+-21 13 l
+-7 13 l
+h S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 -25 20 cm
+BT
+/F1 12 Tf
+1 0 0 -1 0 0 Tm
+-14.664 -4.308 Td
+(clk) Tj
+ET
+Q
+q
+0.988 0.988 0.208 rg
+/GSa0 gs
+212 32 60 60 re
+f
+Q
+212 32 60 60 re
+S
+q
+0.992 0.992 0.404 rg
+/GSa0 gs
+208 28 60 60 re
+f
+Q
+208 28 60 60 re
+S
+q
+0.996 0.996 0.600 rg
+/GSa0 gs
+204 24 60 60 re
+f
+Q
+204 24 60 60 re
+S
+q
+1.000 1.000 0.800 rg
+/GSa0 gs
+200 20 60 60 re
+f
+Q
+200 20 60 60 re
+S
+200 43 m
+207 40 l
+200 37 l
 S
 q
 0.000 0.000 0.000 rg
 /GSa0 gs
-1 0 0 1 80 18 cm
+1 0 0 1 230 18 cm
 BT
 /F1 12 Tf
 1 0 0 -1 0 0 Tm
--16.344 2.484 Td
-(dout_i) Tj
+-35.358 2.484 Td
+(dout_reg[7:0]) Tj
 ET
 Q
 q
 0.000 0.000 0.000 rg
 /GSa0 gs
-1 0 0 1 80 62 cm
+1 0 0 1 230 94 cm
+BT
+/F1 12 Tf
+1 0 0 -1 0 0 Tm
+-27.672 -8.616 Td
+(RTL_REG) Tj
+ET
+Q
+190 40 m
+200 40 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 209 40 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 -3.59 Td
+(C) Tj
+ET
+Q
+3 w
+190 60 m
+200 60 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 202 60 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 -3.59 Td
+(D) Tj
+ET
+Q
+270 50 m
+260 50 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 258 50 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-7.78 -3.59 Td
+(Q) Tj
+ET
+Q
+300 50 m
+300 43 l
+314 43 l
+321 50 l
+314 57 l
+300 57 l
+h S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 325 50 cm
+BT
+/F1 12 Tf
+1 0 0 -1 0 0 Tm
+0 -4.308 Td
+(dout[7:0]) Tj
+ET
+Q
+q
+1.000 1.000 0.800 rg
+/GSa0 gs
+30 50 100 40 re
+f
+Q
+1 w
+30 50 100 40 re
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 80 48 cm
+BT
+/F1 12 Tf
+1 0 0 -1 0 0 Tm
+-19.68 2.484 Td
+(dout0_i) Tj
+ET
+Q
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 80 92 cm
 BT
 /F1 12 Tf
 1 0 0 -1 0 0 Tm
@@ -103,13 +240,13 @@ BT
 ET
 Q
 3 w
-20 40 m
-30 40 l
+20 70 m
+30 70 l
 S
 q
 0.000 0.000 0.000 rg
 /GSa0 gs
-1 0 0 1 32 40 cm
+1 0 0 1 32 70 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -117,13 +254,13 @@ BT
 (A[15:0]) Tj
 ET
 Q
-140 40 m
-130 40 l
+140 70 m
+130 70 l
 S
 q
 0.000 0.000 0.000 rg
 /GSa0 gs
-1 0 0 1 128 40 cm
+1 0 0 1 128 70 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -131,16 +268,16 @@ BT
 (O[7:0]) Tj
 ET
 Q
-0 40 m
--7 47 l
--21 47 l
--21 33 l
--7 33 l
+0 70 m
+-7 77 l
+-21 77 l
+-21 63 l
+-7 63 l
 h S
 q
 0.000 0.000 0.000 rg
 /GSa0 gs
-1 0 0 1 -25 40 cm
+1 0 0 1 -25 70 cm
 BT
 /F1 12 Tf
 1 0 0 -1 0 0 Tm
@@ -148,30 +285,24 @@ BT
 (addr[15:0]) Tj
 ET
 Q
-160 40 m
-160 33 l
-174 33 l
-181 40 l
-174 47 l
-160 47 l
-h S
-q
-0.000 0.000 0.000 rg
-/GSa0 gs
-1 0 0 1 185 40 cm
-BT
-/F1 12 Tf
-1 0 0 -1 0 0 Tm
-0 -4.308 Td
-(dout[7:0]) Tj
-ET
-Q
 0.000 0.502 0.000 RG
-0 40 m
-20 40 l
+0 70 m
+20 70 l
 S
-140 40 m
+270 50 m
+300 50 l
+S
+140 70 m
+160 70 l
+160 60 l
+190 60 l
+S
+1 w
+0.098 0.706 0.000 RG
+0 20 m
+160 20 l
 160 40 l
+190 40 l
 S
 endstream
 endobj
@@ -203,10 +334,20 @@ endobj
 endobj
 14 0 obj
 <<
-  /Title  (dout_i RTL_ROM)
+  /Title  (dout0_i RTL_ROM)
   /C      [0.0 0.0 0.4]
-  /Dest   [10 0 R /FitR 224 343 402 448]
+  /Dest   [10 0 R /FitR 170 341 300 417]
   /Parent 13 0 R
+  /Next   15 0 R
+>>
+endobj
+15 0 obj
+<<
+  /Title  (dout_reg[7:0] RTL_REG__BREG_1)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 354 339 443 450]
+  /Parent 13 0 R
+  /Prev   14 0 R
 >>
 endobj
 13 0 obj
@@ -216,96 +357,122 @@ endobj
   /F      1
   /Parent 12 0 R
   /First  14 0 R
-  /Last   14 0 R
-  /Count  1
-  /Next   15 0 R
->>
-endobj
-15 0 obj
-<<
-  /Title  (ports)
-  /C      [0.0 0.4 0.0]
-  /F      1
-  /Parent 12 0 R
-  /First  0 0 R
-  /Last   0 0 R
-  /Count  0
-  /Prev   13 0 R
+  /Last   15 0 R
+  /Count  2
   /Next   16 0 R
 >>
 endobj
 17 0 obj
 <<
-  /Title  (addr input)
+  /Title  (clk input)
   /C      [0.0 0.0 0.4]
-  /Dest   [10 0 R /FitR 76 381 198 410]
+  /Dest   [10 0 R /FitR 106 425 150 442]
   /Parent 16 0 R
-  /Next   18 0 R
->>
-endobj
-18 0 obj
-<<
-  /Title  (dout output)
-  /C      [0.0 0.0 0.4]
-  /Dest   [10 0 R /FitR 428 381 538 410]
-  /Parent 16 0 R
-  /Prev   17 0 R
 >>
 endobj
 16 0 obj
+<<
+  /Title  (ports)
+  /C      [0.0 0.4 0.0]
+  /F      1
+  /Parent 12 0 R
+  /First  17 0 R
+  /Last   17 0 R
+  /Count  1
+  /Prev   13 0 R
+  /Next   18 0 R
+>>
+endobj
+19 0 obj
+<<
+  /Title  (addr input)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 63 368 152 390]
+  /Parent 18 0 R
+  /Next   20 0 R
+>>
+endobj
+20 0 obj
+<<
+  /Title  (dout output)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 470 390 550 412]
+  /Parent 18 0 R
+  /Prev   19 0 R
+>>
+endobj
+18 0 obj
 <<
   /Title  (portBuses)
   /C      [0.0 0.4 0.0]
   /F      1
   /Parent 12 0 R
-  /First  17 0 R
-  /Last   18 0 R
+  /First  19 0 R
+  /Last   20 0 R
   /Count  2
-  /Prev   15 0 R
-  /Next   19 0 R
+  /Prev   16 0 R
+  /Next   21 0 R
 >>
 endobj
-19 0 obj
+22 0 obj
+<<
+  /Title  (clk)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 147 411 355 434]
+  /Parent 21 0 R
+>>
+endobj
+21 0 obj
 <<
   /Title  (nets)
   /C      [0.0 0.4 0.0]
   /F      1
   /Parent 12 0 R
-  /First  0 0 R
-  /Last   0 0 R
-  /Count  0
-  /Prev   16 0 R
-  /Next   20 0 R
+  /First  22 0 R
+  /Last   22 0 R
+  /Count  1
+  /Prev   18 0 R
+  /Next   23 0 R
 >>
 endobj
-21 0 obj
+24 0 obj
 <<
   /Title  (@addr)
   /C      [0.0 0.0 0.4]
-  /Dest   [10 0 R /FitR 194 396 224 396]
-  /Parent 20 0 R
-  /Next   22 0 R
+  /Dest   [10 0 R /FitR 148 379 170 379]
+  /Parent 23 0 R
+  /Next   25 0 R
 >>
 endobj
-22 0 obj
+25 0 obj
 <<
   /Title  (@dout)
   /C      [0.0 0.0 0.4]
-  /Dest   [10 0 R /FitR 402 396 432 396]
-  /Parent 20 0 R
-  /Prev   21 0 R
+  /Dest   [10 0 R /FitR 441 401 473 401]
+  /Parent 23 0 R
+  /Prev   24 0 R
+  /Next   26 0 R
 >>
 endobj
-20 0 obj
+26 0 obj
+<<
+  /Title  (@dout0)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 297 376 357 393]
+  /Parent 23 0 R
+  /Prev   25 0 R
+>>
+endobj
+23 0 obj
 <<
   /Title  (netBundles)
   /C      [0.0 0.4 0.0]
   /F      1
   /Parent 12 0 R
-  /First  21 0 R
-  /Last   22 0 R
-  /Count  2
-  /Prev   19 0 R
+  /First  24 0 R
+  /Last   26 0 R
+  /Count  3
+  /Prev   21 0 R
 >>
 endobj
 12 0 obj
@@ -315,7 +482,7 @@ endobj
   /Dest   [10 0 R /Fit]
   /Parent 7 0 R
   /First  13 0 R
-  /Last   20 0 R
+  /Last   23 0 R
   /Count  5
 >>
 endobj
@@ -336,36 +503,40 @@ endobj
 >>
 endobj
 xref
-0 23
+0 27
 0000000000 65535 f 
 0000000009 00000 n 
 0000000210 00000 n 
-0000002067 00000 n 
+0000003244 00000 n 
 0000000360 00000 n 
 0000000487 00000 n 
-0000002170 00000 n 
-0000004172 00000 n 
-0000004130 00000 n 
-0000004151 00000 n 
+0000003347 00000 n 
+0000005937 00000 n 
+0000005895 00000 n 
+0000005916 00000 n 
 0000000696 00000 n 
 0000000837 00000 n 
-0000003972 00000 n 
-0000002567 00000 n 
-0000002436 00000 n 
-0000002727 00000 n 
-0000003186 00000 n 
-0000002898 00000 n 
-0000003041 00000 n 
-0000003363 00000 n 
-0000003811 00000 n 
-0000003533 00000 n 
-0000003672 00000 n 
+0000005737 00000 n 
+0000003925 00000 n 
+0000003613 00000 n 
+0000003762 00000 n 
+0000004211 00000 n 
+0000004085 00000 n 
+0000004672 00000 n 
+0000004384 00000 n 
+0000004527 00000 n 
+0000004969 00000 n 
+0000004849 00000 n 
+0000005576 00000 n 
+0000005141 00000 n 
+0000005280 00000 n 
+0000005436 00000 n 
 trailer
 <<
-  /Size 23
+  /Size 27
   /Info 1 0 R
   /Root 2 0 R
 >>
 startxref
-4254
+6019
 %%EOF

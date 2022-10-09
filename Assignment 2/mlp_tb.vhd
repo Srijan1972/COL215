@@ -44,7 +44,7 @@ begin
         wait for 55 ns;
         start <= '1';
 
-        wait for 240000 * TbPeriod;
+        wait for 110000 * TbPeriod;
 
         -- Stop the clock and hence terminate the simulation
         TbSimEnded <= '1';

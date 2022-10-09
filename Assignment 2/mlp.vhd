@@ -17,14 +17,6 @@ component comparator is
         cout:out std_logic_vector(15 downto 0));
 end component;
 
-component counter is 
-	generic (
-		count_width : integer := 1);
-	port(
-		clk : in std_logic;
-        clk_div : out std_logic);
-end component;
-
 component mac is
     port (
         clk:in std_logic;
@@ -68,7 +60,6 @@ component shifter is
 end component;
     signal cin:std_logic_vector(15 downto 0):=(others => '0');
     signal cout:std_logic_vector(15 downto 0):=(others => '0');
-    signal clk_div:std_logic:='1';
     signal ctrl:std_logic:='0';
     signal mac_en:std_logic:='0';
     signal mac_din1:std_logic_vector(7 downto 0):=(others => '0');
@@ -101,10 +92,9 @@ begin
     ram_addr <= std_logic_vector(to_unsigned(ram_int,10));
     rom_addr <= std_logic_vector(to_unsigned(rom_int,16));
     relu:comparator port map(cin,cout);
-    deter:counter port map(clk,clk_div);
     apple:mac port map(clk,ctrl,mac_en,mac_din1,mac_din2,mac_dout);
     local:ram port map(clk,ram_w,ram_din,ram_addr,ram_dout);
-    global:rom generic map("imgdata_digit5.mif","weights_bias.mif") port map(clk,rom_addr,rom_dout);
+    global:rom generic map("imgdata_digit2.mif","weights_bias.mif") port map(clk,rom_addr,rom_dout);
     div:shifter port map(sin,sout);
     display:seven_seg port map(inp,disp,an);
     process(clk)
