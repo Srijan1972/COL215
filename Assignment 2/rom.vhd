@@ -8,7 +8,7 @@ entity rom is
         img_file:string;
         params_file:string);
     port(
---        clk :in std_logic;
+        clk :in std_logic;
         addr:in std_logic_vector(15 downto 0);
         dout:out std_logic_vector(7 downto 0));
 end entity;
@@ -45,5 +45,10 @@ architecture beh of rom is
     end function;
     signal ro_mem:mem_array:=load_params(params_file,load_img(img_file));
 begin
-    dout <= ro_mem(to_integer(unsigned(addr)));
+    process(clk)
+    begin
+        if rising_edge(clk) then
+            dout <= ro_mem(to_integer(unsigned(addr)));
+        end if;
+    end process;
 end beh;

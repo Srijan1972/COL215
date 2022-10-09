@@ -41,10 +41,10 @@ begin
         -- EDIT Adapt initialization as needed
         start <= '0';
 
-        wait for 10 ns;
+        wait for 55 ns;
         start <= '1';
 
-        wait for 110000 * TbPeriod;
+        wait for 240000 * TbPeriod;
 
         -- Stop the clock and hence terminate the simulation
         TbSimEnded <= '1';
@@ -52,10 +52,3 @@ begin
     end process;
 
 end tb;
-
--- Configuration block below is required by some simulators. Usually no need to edit.
-
-configuration cfg_tb_mlp of tb_mlp is
-    for tb
-    end for;
-end cfg_tb_mlp;
