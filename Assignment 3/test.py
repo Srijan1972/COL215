@@ -4,9 +4,8 @@ Created on Mon Aug  8 23:28:02 2022
 
 @author: nsahu
 """
-
 from K_map_gui_tk import *
-
+from our_code import *
 """
 Class kmap is the wrapper for the tkinter gui.
 Usage: kmap(<kmap values in list of list form>)
@@ -23,7 +22,7 @@ Fill colour options = ['red', 'blue', 'green', 'yellow']
 """
 Sample code for the example given in the slide
 """
-
+print(is_legal_region([[1,1],[1,1]],[None,None]))
 root = kmap([[0,1,1,0], ['x',1,'x',0], [1,0,0,0], [1,'x',0,0]])
 root.draw_region(0,1,1,2,'blue')
 root.draw_region(3,3,3,0,'green')
