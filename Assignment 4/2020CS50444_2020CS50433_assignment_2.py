@@ -38,10 +38,6 @@ def comb_function_expansion(func_TRUE, func_DC):
             else:
                 bin.append(1)
         dc_bin.append(bin)
-    print(func_TRUE)
-    print(true_bin)
-    print(func_DC)
-    print(dc_bin)
     return ans
     
 
