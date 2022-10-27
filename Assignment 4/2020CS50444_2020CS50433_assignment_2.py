@@ -78,16 +78,17 @@ def comb_function_expansion(func_TRUE, func_DC):
         M = len(term_bin)
         changed = False
         for i in range(M):
+            # print(f"Current term: {bin_to_min([term_bin[i][0]])[0]}")
             for j in range(i+1,M):
                 res = can_take_common(term_bin[i][0],term_bin[j][0])
-                # print(term_bin[i][0],term_bin[j][0])
                 if res >= 0:
                     L = term_bin[i][0].copy()
                     L[res] = 'x'
                     changed = True
                     terms = term_bin[i][1].union(term_bin[j][1])
-                    # print(L)
+                    # print(f"Terms {bin_to_min([term_bin[i][0]])[0]} and {bin_to_min([term_bin[j][0]])[0]}")
                     term_bin.append((L,terms))
+                    # print(f"Term {bin_to_min([L])[0]} is generated")
         for i in range(M):
             used.append(term_bin.pop(0))
     for i in range(T):
@@ -111,4 +112,7 @@ def comb_function_expansion(func_TRUE, func_DC):
 # func_DC = ["abc'd'e'", "abc'd'e", "abc'de", "abc'de'"]
 # func_TRUE = ["a'bc'd'", "abc'd'", "a'b'c'd", "a'bc'd", "a'b'cd"]
 # func_DC = ["abc'd"]
+# func_TRUE = ["a'b'c'd", "a'b'c'd'", "a'b'cd'", "abcd'"]
+# func_DC = ["abc'd'", 'abcd', "a'bcd", "ab'cd'", "a'bc'd'", "a'b'c'd'"]
 # print(comb_function_expansion(func_TRUE,func_DC))
+
