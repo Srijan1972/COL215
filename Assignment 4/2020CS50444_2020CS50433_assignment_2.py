@@ -1,5 +1,32 @@
-from sqlalchemy import true
 from K_map_gui_tk import *
+
+def can_take_common(T1,T2):
+    assert(len(T1)==len(T2))
+    diff_count = 0
+    for i in range(len(T1)):
+        if T1[i]!=T2[i]:
+            diff_count += 1
+    if diff_count == 1:
+        i = 0
+        while i < len(T1) and T1[i] == T2[i]:
+            i += 1
+        return i
+    else:
+        return -1
+
+def bin_to_min(L):
+    minterms = []
+    for term in L:
+        s = ""
+        c = 97
+        for ch in term:
+            if ch == 0:
+                s = s + chr(c) + "'"
+            elif ch == 1:
+                s = s + chr(c)
+            c += 1
+        minterms.append(s)
+    return minterms
 
 def comb_function_expansion(func_TRUE, func_DC):
     """
@@ -12,40 +39,74 @@ def comb_function_expansion(func_TRUE, func_DC):
     """
     N = 0
     t = func_TRUE[0]
+    K = len(func_TRUE)
     c = 97
-    ans = []
+    ans = ["" for i in range(len(func_TRUE)+len(func_DC))]
+    ans_bin = []
     vars = []
     while chr(c) in t:
         N+=1
         vars.append(chr(c))
         c+=1
-    true_bin = []
-    dc_bin = []
+    term_bin = []
+    it = 0
     for term in func_TRUE:
-        bin = 0
+        bin = []
         for var in vars:
             i = term.find(var)
             if i<len(term)-1 and term[i+1]=="'":
-                bin = bin << 1
+                bin.append(0)
             else:
-                bin = (bin << 1) + 1
-        true_bin.append(bin)
+                bin.append(1)
+        term_bin.append((bin,{it}))
+        it += 1
     for term in func_DC:
-        bin = 0
+        bin = []
         for var in vars:
             i = term.find(var)
             if i<len(term)-1 and term[i+1]=="'":
-                bin = bin << 1 
+                bin.append(0) 
             else:
-                bin = (bin << 1) + 1
-        dc_bin.append(bin)
-    print(true_bin)
-    print(dc_bin)
-    return ans
+                bin.append(1)
+        term_bin.append((bin,{it}))
+        it += 1
+    changed = True
+    T = len(term_bin)
+    idx = 0
+    print(len(term_bin))
+    while changed:
+        M = len(term_bin)
+        changed = False
+        for i in range(idx,M):
+            for j in range(i+1,M):
+                res = can_take_common(term_bin[i][0],term_bin[j][0])
+                if res >= 0:
+                    L = term_bin[i][0].copy()
+                    L[res] = 'x'
+                    changed = True
+                    terms = term_bin[i][1].union(term_bin[j][1])
+                    term_bin.append((L,terms))
+        idx+=M
+        print(len(term_bin))
+    for i in range(T):
+        ans_bin.append(term_bin[i][0])
+    for i in range(T):
+        dc = 0
+        for term,st in term_bin:
+            if i in st:
+                x = 0
+                for it in term:
+                    if it == 'x':
+                        x += 1
+                if x > dc:
+                    ans_bin[i] = term
+                    dc = x
+    ans = bin_to_min(ans_bin)
+    return ans[:K]
     
 
 func_TRUE = ["a'b'c'd'e'", "a'b'cd'e", "a'b'cde'", "a'bc'd'e'", "a'bc'd'e", "a'bc'de", "a'bc'de'", "ab'c'd'e'", "ab'cd'e'"]
 func_DC = ["abc'd'e'", "abc'd'e", "abc'de", "abc'de'"]
-func_TRUE = ["a'bc'd'", "abc'd'", "a'b'c'd", "a'bc'd", "a'b'cd"]
-func_DC = ["abc'd"]
+# func_TRUE = ["a'bc'd'", "abc'd'", "a'b'c'd", "a'bc'd", "a'b'cd"]
+# func_DC = ["abc'd"]
 print(comb_function_expansion(func_TRUE,func_DC))
