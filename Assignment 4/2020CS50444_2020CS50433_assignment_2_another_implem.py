@@ -30,16 +30,21 @@ def get_term(term_list,vars):
 def expandterm(term,true_bin,dc_bin,vars):
     print("current term expansion :",get_term(term,vars))
     x = term
+    req = len(term)
     res = x
-    for y in true_bin:
+    for y in true_bin + dc_bin:
         if(x != y and xorcheck(x,y)):
             print("next legal terms :",get_term(y,vars))
             print("yems",x,y)
             res = x + y
+            break
         elif(x != y):
             print("nos",x,y)
     print("expanded term :",get_term(res,vars))
-    return res
+    if(res == term or req == 2):
+        return res
+    else:
+        return expandterm(res,true_bin,dc_bin,vars)
 
 def comb_function_expansion(func_TRUE, func_DC):
     """
