@@ -70,13 +70,10 @@ def comb_function_expansion(func_TRUE, func_DC):
                 bin.append(1)
         term_bin.append((bin,{it}))
         it += 1
-    changed = True
     T = len(term_bin)
     used = []
-    idx = 0
-    while changed:
+    while term_bin!=[]:
         M = len(term_bin)
-        changed = False
         for i in range(M):
             # print(f"Current term: {bin_to_min([term_bin[i][0]])[0]}")
             for j in range(i+1,M):
@@ -84,7 +81,6 @@ def comb_function_expansion(func_TRUE, func_DC):
                 if res >= 0:
                     L = term_bin[i][0].copy()
                     L[res] = 'x'
-                    changed = True
                     terms = term_bin[i][1].union(term_bin[j][1])
                     # print(f"Terms {bin_to_min([term_bin[i][0]])[0]} and {bin_to_min([term_bin[j][0]])[0]}")
                     term_bin.append((L,terms))
@@ -108,11 +104,11 @@ def comb_function_expansion(func_TRUE, func_DC):
     ans = bin_to_min(ans_bin)
     return ans[:K]
 
-# func_TRUE = ["a'b'c'd'e'", "a'b'cd'e", "a'b'cde'", "a'bc'd'e'", "a'bc'd'e", "a'bc'de", "a'bc'de'", "ab'c'd'e'", "ab'cd'e'"]
-# func_DC = ["abc'd'e'", "abc'd'e", "abc'de", "abc'de'"]
+func_TRUE = ["a'b'c'd'e'", "a'b'cd'e", "a'b'cde'", "a'bc'd'e'", "a'bc'd'e", "a'bc'de", "a'bc'de'", "ab'c'd'e'", "ab'cd'e'"]
+func_DC = ["abc'd'e'", "abc'd'e", "abc'de", "abc'de'"]
 # func_TRUE = ["a'bc'd'", "abc'd'", "a'b'c'd", "a'bc'd", "a'b'cd"]
 # func_DC = ["abc'd"]
 # func_TRUE = ["a'b'c'd", "a'b'c'd'", "a'b'cd'", "abcd'"]
 # func_DC = ["abc'd'", 'abcd', "a'bcd", "ab'cd'", "a'bc'd'", "a'b'c'd'"]
-# print(comb_function_expansion(func_TRUE,func_DC))
+print(comb_function_expansion(func_TRUE,func_DC))
 
