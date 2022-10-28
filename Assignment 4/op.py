@@ -51,6 +51,8 @@ def comb_function_expansion(func_TRUE, func_DC):
     term_bin = []
     it = 0
     print(N)
+    print(func_TRUE)
+    print(func_DC)
     for term in func_TRUE:
         bin = []
         for var in vars:
@@ -76,16 +78,16 @@ def comb_function_expansion(func_TRUE, func_DC):
     while term_bin!=[]:
         M = len(term_bin)
         for i in range(M):
-            print(f"Current term: {bin_to_min([term_bin[i][0]])[0]}")
+            # print(f"Current term: {bin_to_min([term_bin[i][0]])[0]}")
             for j in range(i+1,M):
                 res = can_take_common(term_bin[i][0],term_bin[j][0])
                 if res >= 0:
                     L = term_bin[i][0].copy()
                     L[res] = 'x'
                     terms = term_bin[i][1].union(term_bin[j][1])
-                    print(f"Terms {bin_to_min([term_bin[i][0]])[0]} and {bin_to_min([term_bin[j][0]])[0]} combined")
+                    # print(f"Terms {bin_to_min([term_bin[i][0]])[0]} and {bin_to_min([term_bin[j][0]])[0]} combined")
                     term_bin.append((L,terms))
-                    print(f"Term {bin_to_min([L])[0]} is generated")
+                    # print(f"Term {bin_to_min([L])[0]} is generated")
         for i in range(M):
             used.append(term_bin.pop(0))
     for i in range(T):
