@@ -1,5 +1,3 @@
-from K_map_gui_tk import *
-
 def can_take_common(T1,T2):
     assert(len(T1)==len(T2))
     diff_count = 0
