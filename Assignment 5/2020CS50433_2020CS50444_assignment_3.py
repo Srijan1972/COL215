@@ -1,3 +1,17 @@
+def remove_redun(redun,tMap):
+    k = 0
+    for i in range(len(redun)):
+        rest_terms = []
+        for j in range(len(redun)):
+            if(k!=j):
+                rest_terms+=tMap[redun[j]]
+        # print(rest_terms)
+        if (all(x in rest_terms for x in tMap[redun[k]])):
+            redun.remove(redun[k])
+        else:
+            k+=1
+    return redun
+
 def is_contained(T1,T2):
     assert(len(T1) == len(T2))
     n = len(T2)
@@ -132,6 +146,7 @@ def opt_function_reduce(func_TRUE:list, func_DC):
     t = func_TRUE[0]
     c = 97
     vars = []
+    term_resol = {}
     while chr(c) in t:
         N+=1
         vars.append(chr(c))
@@ -146,6 +161,17 @@ def opt_function_reduce(func_TRUE:list, func_DC):
             else:
                 bin.append(1)
         true_bin.append(bin)
+    # getting map
+    n = len(bin_poss)
+    for i in range(n):
+        lt = []
+        term = bin_poss[i]
+        for elem in true_bin:
+            if is_contained(elem,term):
+                lt.append(elem)
+        term_resol[bin_to_min([term])[0]] = lt
+    # print(term_resol)
+    # part 1
     while true_bin != []:
         n = len(bin_poss)
         L = [[] for i in range(n)]
@@ -167,7 +193,10 @@ def opt_function_reduce(func_TRUE:list, func_DC):
             for elem in L[mxindex]:
                 true_bin.remove(elem)
             bin_poss.remove(mxterm)
-    return bin_to_min(ans)
+    # part 2
+    # print(bin_to_min(ans))
+    ans = remove_redun(bin_to_min(ans),term_resol)
+    return ans
 
 # t1 = ["ab'cd'","abcd'"]
 # d1 = ["a'b'cd"]

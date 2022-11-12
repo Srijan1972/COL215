@@ -1,15 +1,18 @@
 def remove_redun(redun,tMap):
-    rn = len(redun)
-    notredun = []
-    for i in range(rn):
+    k = 0
+    for i in range(len(redun)):
+        print(i,k)
+        print(redun[k])
         rest_terms = []
-        for j in range(rn):
-            if(i!=j):
+        for j in range(len(redun)):
+            if(k!=j):
                 rest_terms+=tMap[redun[j]]
         # print(rest_terms)
-        if not(all(x in rest_terms for x in tMap[redun[i]])):
-            notredun.append(redun[i])
-    return notredun
+        if (all(x in rest_terms for x in tMap[redun[k]])):
+            redun.remove(redun[k])
+        else:
+            k+=1
+    return redun
 
 def is_contained(T1,T2):
     assert(len(T1) == len(T2))
