@@ -1,17 +1,3 @@
-def remove_redun(redun,tMap):
-    k = 0
-    for i in range(len(redun)):
-        rest_terms = []
-        for j in range(len(redun)):
-            if(k!=j):
-                rest_terms+=tMap[redun[j]]
-        # print(rest_terms)
-        if (all(x in rest_terms for x in tMap[redun[k]])):
-            redun.remove(redun[k])
-        else:
-            k+=1
-    return redun
-
 def is_contained(T1,T2):
     assert(len(T1) == len(T2))
     n = len(T2)
@@ -50,6 +36,21 @@ def bin_to_min(L):
         minterms.append(s)
     return minterms
 
+def remove_redun(redun,tMap):
+    k = 0
+    for i in range(len(redun)):
+        rest_terms = []
+        for j in range(len(redun)):
+            if(k!=j):
+                rest_terms+=tMap[redun[j]]
+        # print(rest_terms)
+        if (all(x in rest_terms for x in tMap[redun[k]])):
+            # print("Term,",f"\"{redun[k]}\"","is removed because",bin_to_min(tMap[redun[k]]),"are already covered")
+            redun.remove(redun[k])
+        else:
+            k+=1
+    return redun
+
 def comb_function_expansion(func_TRUE, func_DC):
     """
     Determines the maximum legal region for each term in the K-map function
@@ -73,9 +74,9 @@ def comb_function_expansion(func_TRUE, func_DC):
         c+=1
     term_bin = []
     it = 0
-    print(N)
-    print(func_TRUE)
-    print(func_DC)
+    # print(N)
+    # print(func_TRUE)
+    # print(func_DC)
     for term in func_TRUE:
         bin = []
         for var in vars:
@@ -191,6 +192,7 @@ def opt_function_reduce(func_TRUE:list, func_DC):
         if mxterm is not None:
             ans.append(mxterm)
             for elem in L[mxindex]:
+                # print("term:",bin_to_min([elem])[0],"is covered by the term",bin_to_min([mxterm])[0])
                 true_bin.remove(elem)
             bin_poss.remove(mxterm)
     # part 2
@@ -243,8 +245,6 @@ def opt_function_reduce(func_TRUE:list, func_DC):
 # t15 = ["a'b'c'd'e'", "a'bc'd'e'", "abc'd'e'", "ab'c'd'e'", "abc'de'", "abcde'","a'bcde'", "a'bcd'e'", "abcd'e'", "a'bc'de", "abc'de", "abcde","a'bcde", "a'bcd'e", "abcd'e", "a'b'cd'e", "ab'cd'e"]
 # d15 = []
 # print(opt_function_reduce(t15,d15))
-
-# counter example 1
 # t16 = ["abc'd","abcd","ab'c'd'","a'bcd'"]
 # d16 = ["abc'd'","ab'c'd","a'bcd","abcd'"]
 # print(opt_function_reduce(t16,d16))
