@@ -1,5 +1,3 @@
-from K_map_gui_tk import *
-
 def is_legal_region(kmap_function, term):
     """
     Determines whether the specified region is LEGAL for the K-map function
