@@ -194,36 +194,5 @@ def is_legal_region(kmap_function, term):
                 for i in range(tlx,brx+1):
                     if kmap_function[i][j]==0:
                         legal = False
-    # for highlighting region
-    # kMap = kmap(kmap_function)
-    # if legal:
-    #     kMap.draw_region(tlx,tly,brx,bry,'green')
-    # else:
-    #     kMap.draw_region(tlx,tly,brx,bry,'blue')
-    # kMap.mainloop()
     return ((tlx,tly),(brx,bry),legal)
 
-# tests for 2 x 2
-# print(is_legal_region([[0,0],[1,1]],[1,0]))
-# print(is_legal_region([[1,1],[1,1]],[None,None]))
-# print(is_legal_region([[0,1],[1,1]],[1,None]))
-# print(is_legal_region([[0,1],[1,1]],[None,0]))
-
-
-# tests for 2 x 4
-# print(is_legal_region([[0,1,1,0],[1,1,'x',0]],[None,1,None]))
-# print(is_legal_region([[0,1,1,0],[1,1,'x',0]],[None,None,None]))
-# print(is_legal_region([[0,1,1,0],[1,1,'x',0]],[0,1,1]))
-# print(is_legal_region([[0,1,1,0],[1,1,'x',0]],[None,0,0]))
-# print(is_legal_region([[0,1,1,0],[1,1,'x',0]],[None,0,None]))
-# print(is_legal_region([[0,1,1,0],[1,1,'x',0]],[1,1,None]))
-
-# tests for 4 x 4
-# print(is_legal_region([[0,1,1,0],[1,1,'x',0],[1,0,0,0],[0,0,0,0]],[1,0,0,1]))
-# print(is_legal_region([[0,1,1,0],[1,1,'x',0],[1,0,0,0],[0,0,0,0]],[0,1,None,None]))
-# print(is_legal_region([[0,1,1,0],[1,1,'x',0],[1,0,0,0],[0,0,0,0]],[None,None,1,0]))
-# print(is_legal_region([[0,1,1,0],[1,1,'x',0],[1,0,0,0],[0,0,0,0]],[None,1,None,1]))
-# print(is_legal_region([[0,1,1,0],[1,1,'x',0],[1,0,0,0],[0,0,0,0]],[None,1,None,0]))
-# print(is_legal_region([[0,1,1,0],[1,1,'x',0],[1,0,0,0],[0,0,0,0]],[None,0,None,0]))
-# print(is_legal_region([[0,1,1,0],[1,1,'x',0],[1,0,0,0],[0,0,0,0]],[None,0,None,1]))
-# print(is_legal_region([[0,1,1,0],[1,1,'x',0],[1,0,0,0],[0,0,0,0]],[None,1,0,None]))
