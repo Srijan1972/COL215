@@ -24,12 +24,16 @@ This repository contains solutions to programming & hardware assignments given i
 
 - Solving a Karnaugh map using heuristics.
 
-
 ## Lessons Learnt
 
 - VHDL
 - Principles of hardware design
 - Python
+
+## Running Instructions
+
+Running instructions are provided in the `pdf` files in each assignment's directory.
+
 ## Contributors
 
 - [Nischay Diwan](https://github.com/NischayDiwan)
